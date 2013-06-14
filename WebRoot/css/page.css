@@ -1,0 +1,7 @@
+	    ul{list-style-type:none;}
+		.pagination{margin-bottom:5px;height:30px;}.pagination li{float:left;}
+		.pagination a{font-size:10px;display:block;border:1px solid #DDD;padding:4px 12px;line-height:20px;background-color:#FCFFFC;border-left-width:0;}
+		.pagination a:hover{background-color:#F5F5F5;}
+		.pagination .disable{color:#999;cursor:default;background:#F5F5F5;}
+		.pagination .first{border-left:1px solid #DDD;}
+		.pagination .active{background-color:#F5F5F5;cursor:default;color:#999;}

@@ -1,0 +1,111 @@
+<#macro layout title="knife's blog">
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+	    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  		<meta http-equiv="Content-Language" content="zh-CN">
+  		<title>${title}</title>
+  		<link rel="shortcut icon" type="image/x-icon" href="${path}/img/s/favicon.ico">
+  		<meta name="Keywords" content="">
+  		<meta name="Description" content="">
+	    <!-- robbin -->
+	    <link href="${path}/css/document.css" rel="stylesheet" type="text/css">
+	    <!-- robbin -->
+	    <link href="${path}/css/content.css" rel="stylesheet" type="text/css">
+	    <script type="text/javascript">
+	    	var path = '${path}';
+	    </script>
+	    <!-- robbin -->
+	    <script type="text/javascript" src="${path}/js/javascript/jquery.js"></script>
+	    <!-- robbin -->
+	    <script type="text/javascript" src="${path}/js/javascript/jquery-ujs.js"></script>
+	    <!-- robbin -->
+	    <script type="text/javascript" src="${path}/js/javascript/application.js"></script>
+	    
+	</head>
+	<body>
+	    <!-- header -->
+	    <div id="flash-notice"></div>
+	    <div class="header">
+	      <div class="wrap">
+	      	<div class="user_img"><img src="${path}/skins/data/100.png" width="80" height="80" alt="website icon"></div>
+	        <div class="blog_title">knife's blog</div>
+	        <div class="write">
+
+	        </div>
+	        <div class="blog_motto">好好学习 天天向上</div>
+	      </div>
+	    </div>
+	    <!-- header -->
+	    <!-- nav -->
+	    <div class="nav">
+	      <div class="wrap clearfix">
+	      	<div class="search fr">
+	          <form action="/search" id="cse-search-box" method="get">
+	            <input type="hidden" name="cx" value="<%= APP_CONFIG['google_cse'] %>" />
+	            <input type="hidden" name="cof" value="FORID:10" />
+	            <input type="hidden" name="ie" value="UTF-8" />
+	            <input id="search-box" name="q" type="text" placeholder="Search" value="">
+	            <button id="search-button"></button>
+	          </form>
+	        </div>
+	        <ul>
+	          <li><a href="${path}/">首页</a></li>
+	          <li><a href="${path}/">博客</a></li>
+	          <li><a href="#">笔记</a></li>
+	          <li><a href="#">分类</a></li>
+	          <li><a href="#">微博</a></li>
+	          <li><a href="#">关于</a></li>
+	        </ul>
+	      </div>
+	    </div>
+	    <!-- nav --> 
+	</body>
+</html>
+</#macro>
+
+<#macro pagination prefix="" pageNum=1 totalPage=1 >
+	<#if totalPage == 0>
+		<#assign _totalPage = 1 />
+	<#else>
+		<#assign _totalPage = totalPage />
+	</#if>
+	<#if _totalPage != 1>
+	<ul class="pagination">
+		<#if pageNum == 1>
+			<li><a href="javascript:;" class="first disable">&lt;&lt;</a></li>
+			<li><a href="javascript:;" class="disable">&lt;</a></li>
+		<#else>
+			<li><a href="?p=1${prefix}" class="first">&lt;&lt;</a></li>
+			<li><a href="?p=${pageNum-1}${prefix}">&lt;</a></li>
+		</#if>
+		<#if ( _totalPage - pageNum ) gt 6>
+			<#assign endIndex = ( pageNum + 6) />
+		<#else>
+			<#assign endIndex = _totalPage />
+		</#if>
+		<#if ( pageNum - 3 ) gt 0>
+			<#assign startIndex = ( pageNum - 3) />
+		<#else>
+			<#assign startIndex = 1 />
+		</#if>
+		<#list startIndex..endIndex as _pageNum>
+		<li>
+			<#if _pageNum == pageNum>
+				<a href="javascript:;" class="active">${_pageNum}</a>
+			<#else>
+				<a href="?p=${_pageNum}${prefix}">${_pageNum}</a>
+			</#if>
+
+		</li>
+		</#list>
+		<#if pageNum == _totalPage>
+			<li><a href="javascript:;" class="disable">&gt;</a></li>
+			<li><a href="javascript:;" class="disable">&gt;&gt;</a></li>
+		<#else>
+			<li><a href="?p=${pageNum+1}${prefix}">&gt;</a></li>
+			<li><a href="?p=${_totalPage}${prefix}">&gt;&gt;</a></li>
+		</#if>
+	</ul>
+	</#if>
+</#macro>

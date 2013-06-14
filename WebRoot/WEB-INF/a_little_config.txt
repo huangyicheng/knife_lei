@@ -1,0 +1,4 @@
+jdbcUrl = jdbc:mysql://127.0.0.1/blog?characterEncoding=GBK&zeroDateTimeBehavior=convertToNull
+user = root
+password = 1234
+devMode = true

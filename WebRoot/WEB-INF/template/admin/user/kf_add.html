@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <!-- Apple devices fullscreen -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <!-- Apple devices fullscreen -->
+    <meta names="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="${path}/css/bootstrap.min.css">
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="${path}/css/style.css">
+    <!-- jQuery -->
+    <script src="${path}/js/jquery.min.js"></script>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="${path}/img/favicon.ico" />
+    <!-- Apple devices Homescreen icon -->
+    <link rel="apple-touch-icon-precomposed" href="${path}/img/apple-touch-icon-precomposed.png" />
+</head>
+<body>
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="box">
+                    <div class="box-title">
+                        <h3>
+                            <i class="icon-ok"></i>
+                                                                          增加用户
+                        </h3>
+                    </div>
+                    <div class="box-content">
+                     <form action="#" method="POST" class='form-horizontal form-validate' id="bb">
+                            <div class="control-group">
+                                <label for="textfield" class="control-label">用户名称</label>
+                                <div class="controls">
+                                    <input type="text" name="textfield" id="username" class="input-xlarge" data-rule-required="true" data-rule-minlength="2">
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label for="pwfield" class="control-label">密&nbsp;&nbsp;&nbsp;&nbsp;码</label>
+                                <div class="controls">
+                                    <input type="text" name="pwfield" id="password" class="input-xlarge" data-rule-required="true">
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary" id="add">提交</button>  
+                                <button type="reset" class="btn">取消</button>  
+                            </div>
+                            </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <script type="text/javascript">
+		$('#add').click(function()
+		{
+			$.ajax({
+    			url:'${path}/admin/user/addUser',
+    			type:'post',
+    			dataType:'json',
+    			data:{
+    				'user.username':$('#username').val(),
+    				'user.password':$("#password").val()
+    			},
+    			success : function(data){
+    				if(data.error){
+    					
+    				}else{
+    					location.href =  "${path}/admin/user/list.html";
+    				}
+    			}
+    		});
+			return false;
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,210 @@
+<#include "../layout.html"/>
+<@layout>
+    <!-- dataTables -->
+    <link rel="stylesheet" href="${path}/css/plugins/datatable/TableTools.css">
+    <!-- chosen-->
+    <link rel="stylesheet" href="${path}/css/plugins/chosen/chosen.css"> 
+    <!-- dataTables -->
+    <script src="${path}/js/plugins/datatable/jquery.dataTables.min.js"></script>
+    <script src="${path}/js/plugins/datatable/TableTools.min.js"></script>
+    <script src="${path}/js/plugins/datatable/ColReorder.min.js"></script>
+    <script src="${path}/js/plugins/datatable/ColVis.min.js"></script>
+    <script src="${path}/js/plugins/datatable/jquery.dataTables.columnFilter.js"></script>
+    <!-- Chosen -->
+    <script src="${path}/js/plugins/chosen/chosen.jquery.min.js"></script>
+    <!-- Theme framework -->
+    <script src="${path}/js/eakroko.min.js"></script>
+<div class="row-fluid">
+    <div class="span12">
+        <div class="box box-color box-bordered">
+            <div class="box-title">
+                <h3><i class="icon-edit"></i> 修改博客</h3>
+            </div>
+            <div class="box-content nopadding">
+            <form action="#" method="POST" class='form-horizontal form-bordered'>
+                <div class="control-group">
+                    <label for="article_title" class="control-label">博客标题</label>
+                    <div class="controls">
+                        <input type="text" name="article_title" id="article_title" class="input-xlarge" value="${article.title}">
+                    </div>
+                </div>
+                <div for="choice" class="control-group">
+                    <label class="control-label">类&nbsp;&nbsp;&nbsp;&nbsp;型</label>
+                    <div class="controls">
+                        <input type="radio" id="self" class="clearCSS" name="type" value="0">原创
+				        <input type="radio" id="other" class="clearCSS" name="type" value="1">转载
+                    </div>
+                </div>
+                <script>
+                    var type = "${article.type}";
+                    if( type == 0 )
+                    {
+                    	$("#self").attr("checked","checked");
+                    	$('#article_url').hide();
+                    }
+                    else
+                    {
+                    	$("#other").attr("checked","checked");
+                    }
+                </script>
+                <div class="control-group">
+                    <label for="article_url" class="control-label">转载地址</label>
+                    <div class="controls">
+                        <input type="text" name="article_url" id="article_url" class="input-xlarge" value="${article.url!}">
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                     <label for="select" class="control-label">类&nbsp;&nbsp;&nbsp;&nbsp;别</label>
+                     <div class="controls">
+                         <div class="input-xlarge">
+                             <select name="select" id="article_category_id" class='chosen-select'>
+                             <#list categorySuperList as categorySuper>
+									<option value="${categorySuper.id}" 
+									<#if article.categorySuperId == categorySuper.id>
+									selected="selected"
+									</#if> 
+									>${categorySuper.name}</option>
+							 </#list>  
+                             </select>
+                         </div>
+                     </div>
+                </div>
+                <div class="control-group">
+                    <label for="article_tags" class="control-label">标&nbsp;&nbsp;&nbsp;&nbsp;签</label>
+                    <div class="controls">
+                        <input type="text" name="article_tags" id="article_tags" class="input-xlarge" value="${article.tags}">
+                        <span>请以逗号分隔</span>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label for="article_tags" class="control-label">内&nbsp;&nbsp;&nbsp;&nbsp;容</label>
+                    <div class="controls">
+                        <textarea id="article_content" name="article_content" class="form" >${article.content}</textarea>
+                    </div>
+                </div>
+                <div class="form-actions">
+                     <button id="edit"  class="btn">修改</button>
+			         <button id="editTemp"  class="btn">暂存</button>
+                </div>
+            </form>
+            </div>
+        </div>
+    </div>
+</div>
+	<style type="text/css">
+		#article_content{
+			width: 800px;
+			height: 300px;
+		}
+		#article_tags{
+			width: 600px;
+		}
+		#url_article_url{
+			display: none;
+		}
+	</style>
+	<script type="text/javascript" src="${path}/editor/kindeditor-min.js"></script>
+	<script type="text/javascript" src="${path}/js/sha1.js"></script>
+	<script type="text/javascript">
+		var editor;
+		KindEditor.ready(function(K) {
+		      editor = K.create('#article_content',{
+		      	items:[
+					        'source','code','undo', 'redo', '|', 'preview', 'template' , 'plainpaste', 'wordpaste', '|', 'justifyleft', 'justifycenter', 'justifyright',
+					        'justifyfull', 'insertorderedlist', 'insertunorderedlist', 'indent', 'outdent', 'subscript',
+					        'superscript', 'clearhtml', 'quickformat', 'selectall', '|', 'fullscreen', '/',
+					        'formatblock', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold',
+					        'italic', 'underline', 'strikethrough', 'lineheight', 'removeformat', '|', 'image',
+					        'flash', 'media', 'insertfile', 'table', 'hr', 'emoticons', 'baidumap', 'pagebreak',
+					        'anchor', 'link', 'unlink','about'
+						],
+				resizeType:1,
+				uploadJson : '${path}/admin/file/upload',
+				allowFileManager : false,
+				filterMode : false
+		      });
+		});
+		$('input[name=type]').click(function(){ 
+			if(this.value && this.checked){
+				$('#url_article_url').show();
+			}
+			if(0 == this.value){
+				$('#url_article_url').hide();
+			}
+		});
+		$('#edit').click(function(){
+			editor.sync();
+			var data = {};
+			data['article.id'] = ${article.id};
+			data['article.title'] = $('#article_title').val(); 
+			data['article.url'] = $('#article_url').val();
+			data['article.categorySubId'] = $('#article_category_id').val();
+			data['article.projectId'] = $('#article_project_id').val();
+			data['article.content'] = $('#article_content').val();
+			data['article.tags'] = $('#article_tags').val();
+			data['article.type'] = $('input[name=type]:checked').val();
+			$.post('${path}/admin/article/editArticle/${article.id}.html',data,function(data){
+				if(data.error){
+
+				}else{
+					location.href = '${path}/admin/article.html';
+				}
+			});
+			return false;
+		});
+		$('#editTemp').click(function(){
+			editor.sync();
+			var data = {};
+			data['article.id'] = ${article.id};
+			data['article.title'] = $('#article_title').val(); 
+			data['article.url'] = $('#article_url').val();
+			data['article.categorySubId'] = $('#article_category_id').val();
+			data['article.projectId'] = $('#article_project_id').val();
+			data['article.content'] = $('#article_content').val();
+			data['article.tags'] = $('#article_tags').val();
+			data['article.type'] = $('input[name=type]:checked').val();
+			$.post('${path}/admin/article/editTempArticle',data,function(data){
+				if(data.error){
+
+				}else{
+					message('已成功保存...');
+				}
+			});
+			return false;
+		});
+		var sha1 = 0;
+		var sha2 = 0;
+		setInterval(function(){
+			editor.sync();
+			var data = {};
+			data['content'] = $('#article_content').val();
+			var sha2 = hex_sha1(data['content']);
+			if(sha2 == sha1){
+				return false;
+			}else{
+				sha1 = sha2;
+			}
+			console.log('start saving...');
+			data['article.id'] = ${article.id};
+			data['article.title'] = $('#article_title').val(); 
+			data['article.url'] = $('#article_url').val();
+			data['article.categorySubId'] = $('#article_category_id').val();
+			data['article.projectId'] = $('#article_project_id').val();
+			data['article.tags'] = $('#article_tags').val();
+			data['article.type'] = $('input[name=type]:checked').val();
+			$.post('${path}/admin/article/editTempArticle',data,function(data){
+				if(data.error){
+
+				}else{
+					message('已成功自动保存...');
+				}
+			});
+		},2 * 60 * 1000);
+	</script>
+	<#if article.type == 1>
+	<script type="text/javascript">
+		$('#type_1').click().attr('selected',false).click();
+	</script>
+	</#if>
+</@layout>
