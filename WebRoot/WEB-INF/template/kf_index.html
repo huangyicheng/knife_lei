@@ -1,67 +1,92 @@
-<#include "kf_layout.html"/>
-<@layout>
+<#include "kf_layout.html"/> <@layout> </@layout>
+<style>
+.pagination {
+	margin-bottom: 5px;
+	height: 30px;
+}
 
-</@layout>
-    <style>
-        .pagination{margin-bottom:5px;height:30px;}.pagination li{float:left;}
-		.pagination a{font-size:10px;display:block;border:1px solid #DDD;padding:4px 12px;line-height:20px;background-color:#FCFFFC;border-left-width:0;}
-		.pagination a:hover{background-color:#F5F5F5;}
-		.pagination .disable{color:#999;cursor:default;background:#F5F5F5;}
-		.pagination .first{border-left:1px solid #DDD;}
-		.pagination .active{background-color:#F5F5F5;cursor:default;color:#999;}
-    </style>
-    <div class="wrap clearfix">
-        <div class="left">
-        <!-- 博客列表 -->
-        <#list page_news.list as blog>
-	        <div class="con">
-				<div class="tit clearfix">
-				    <span class="note_icon"></span>
-				    <a href="${path}/article/${blog.id}.html">${blog.title}</a>
-			    </div>
-			  <div class="text">
-					<div class="infor_tag">    
-						 <#list blog._tags as tag>
-							<a title="${tag}" href="${path}/tag/${tag}.html" class="tag" rel="tag">
-							 <span>${tag}</span>
-							</a>
-						</#list>
-			        </div>
-			       ${blog.brief}
-			  </div>
-			  <div class="info clearfix">
-			    <div class="fr">
-				  <span class="author">knife</span>
-			      <span class="time">${blog._createDateTime}发表</span>
-			      <span class="edit">${blog._updateDateTime}更新</span>
-			      <span class="views" title="浏览次数">${blog.viewCount}次浏览</span>
-			      <a class="comment" href="#" title="评论">${blog.replyCount}</a>
-			    </div>
-			  </div>
+.pagination li {
+	float: left;
+}
+
+.pagination a {
+	font-size: 10px;
+	display: block;
+	border: 1px solid #DDD;
+	padding: 4px 12px;
+	line-height: 20px;
+	background-color: #FCFFFC;
+	border-left-width: 0;
+}
+
+.pagination a:hover {
+	background-color: #F5F5F5;
+}
+
+.pagination .disable {
+	color: #999;
+	cursor: default;
+	background: #F5F5F5;
+}
+
+.pagination .first {
+	border-left: 1px solid #DDD;
+}
+
+.pagination .active {
+	background-color: #F5F5F5;
+	cursor: default;
+	color: #999;
+}
+</style>
+<div class="wrap clearfix">
+	<div class="left">
+		<!-- 博客列表 -->
+		<#list page_news.list as blog>
+		<div class="con">
+			<div class="tit clearfix">
+				<span class="note_icon"></span> <a
+					href="${path}/article/${blog.id}.html">${blog.title}</a>
 			</div>
-		</#list>
-		<@pagination pageNum=page_news.pageNumber totalPage=page_news.totalPage/>
-        </div>
-        <div class="right">
-            <h3>文章分类</h3>
-			<div class="tag">
-			<#list CategorySupers as CategorySuper>
-			    <a href="${path}/categorySuper/${CategorySuper.id}.html" >${CategorySuper.name}<span>${CategorySuper._number}</span></a>
+			<div class="text">
+				<div class="infor_tag">
+					<#list blog._tags as tag> <a title="${tag}"
+						href="${path}/tag/${tag}.html" class="tag" rel="tag"> <span>${tag}</span>
+					</a> </#list>
+				</div>
+				${blog.brief}
+			</div>
+			<div class="info clearfix">
+				<div class="fr">
+					<span class="author">knife</span> <span class="time">${blog._createDateTime}发表</span>
+					<span class="edit">${blog._updateDateTime}更新</span> <span
+						class="views" title="浏览次数">${blog.viewCount}次浏览</span> <a
+						class="comment" href="#" title="评论">${blog.replyCount}</a>
+				</div>
+			</div>
+		</div>
+		</#list> <@pagination pageNum=page_news.pageNumber
+		totalPage=page_news.totalPage/>
+	</div>
+	<div class="right">
+		<h3>文章分类</h3>
+		<div class="tag">
+			<#list CategorySupers as CategorySuper> <a
+				href="${path}/categorySuper/${CategorySuper.id}.html">${CategorySuper.name}<span>${CategorySuper._number}</span></a>
 			</#list>
-			</div>
-			  
-			<h3>热门文章</h3>
-			<div class="hot_blog">
-			<#list hotsView as view>
-			    <a href="${path}/article/${view.id}.html" >${view.title}</a>
-			</#list>    
-			</div>
-			
-			<h3>最新评论</h3>
-			<ul class="comment">
-				<li>
-			    <div> </div>
-			  </li>
-			</ul>
-        </div>
-    </div>
+		</div>
+
+		<h3>热门文章</h3>
+		<div class="hot_blog">
+			<#list hotsView as view> <a href="${path}/article/${view.id}.html">${view.title}</a>
+			</#list>
+		</div>
+
+		<h3>最新评论</h3>
+		<ul class="comment">
+			<li>
+				<div></div>
+			</li>
+		</ul>
+	</div>
+</div>

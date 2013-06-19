@@ -1,24 +1,25 @@
-<#include "../../dialog.html"/>
-<@dialog title="添加二级菜单">
+<#include "../../dialog.html"/> <@dialog title="添加二级菜单">
 <div id="form">
 	<div class="form_row">
 		<label class="span2">名称:</label>
-		<div><input id="categorySub_name" class="form" type="text"></div>
+		<div>
+			<input id="categorySub_name" class="form" type="text">
+		</div>
 	</div>
 	<div class="form_row">
 		<label class="span2">顺序值:</label>
 		<div>
-			<select id="categorySub_order">
-				<#list 0..count-1 as index>
-					<option value="${index}">${index}</option>
-				</#list>
+			<select id="categorySub_order"> <#list 0..count-1 as index>
+				<option value="${index}">${index}</option> </#list>
 			</select>
 		</div>
 	</div>
 	<div class="form_row">
 		<button id="add" type="button">添加</button>
 	</div>
-	<div><input type="hidden" id="pId" value="${pId}"/></div>
+	<div>
+		<input type="hidden" id="pId" value="${pId}" />
+	</div>
 	<script type="text/javascript">
 		$('#add').click(function(){
 			console.log(this);

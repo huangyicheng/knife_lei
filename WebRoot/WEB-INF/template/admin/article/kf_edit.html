@@ -1,54 +1,62 @@
 <!doctype html>
 <html>
 <head>
-    <meta charset="utf8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <!-- Apple devices fullscreen -->
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <!-- Apple devices fullscreen -->
-    <meta names="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="${path}/css/bootstrap.min.css">
-    <!-- chosen -->
-    <link rel="stylesheet" href="${path}/css/plugins/chosen/chosen.css">
-    <!-- Theme CSS -->
-    <link rel="stylesheet" href="${path}/css/style.css">
+<meta charset="utf8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<!-- Apple devices fullscreen -->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!-- Apple devices fullscreen -->
+<meta names="apple-mobile-web-app-status-bar-style"
+	content="black-translucent" />
+<!-- Bootstrap -->
+<link rel="stylesheet" href="${path}/css/bootstrap.min.css">
+<!-- chosen -->
+<link rel="stylesheet" href="${path}/css/plugins/chosen/chosen.css">
+<!-- Theme CSS -->
+<link rel="stylesheet" href="${path}/css/style.css">
 
-    <!-- jQuery -->
-    <script src="${path}/js/jquery.min.js"></script>
-    <!-- Bootstrap -->
-    <script src="${path}/js/bootstrap.min.js"></script>
-    <!-- Chosen -->
-    <script src="${path}/js/plugins/chosen/chosen.jquery.min.js"></script>
-    <!-- Theme framework -->
-    <script src="${path}/js/eakroko.min.js"></script>
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="${path}/img/favicon.ico" />
-    <!-- Apple devices Homescreen icon -->
-    <link rel="apple-touch-icon-precomposed" href="${path}/img/apple-touch-icon-precomposed.png" />
+<!-- jQuery -->
+<script src="${path}/js/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="${path}/js/bootstrap.min.js"></script>
+<!-- Chosen -->
+<script src="${path}/js/plugins/chosen/chosen.jquery.min.js"></script>
+<!-- Theme framework -->
+<script src="${path}/js/eakroko.min.js"></script>
+<!-- Favicon -->
+<link rel="shortcut icon" href="${path}/img/favicon.ico" />
+<!-- Apple devices Homescreen icon -->
+<link rel="apple-touch-icon-precomposed"
+	href="${path}/img/apple-touch-icon-precomposed.png" />
 <body>
-<div class="row-fluid">
-    <div class="span12">
-        <div class="box box-color box-bordered">
-            <div class="box-title">
-                <h3><i class="icon-edit"></i> 修改博客</h3>
-            </div>
-            <div class="box-content nopadding">
-            <form action="#" method="POST" class='form-horizontal form-bordered'>
-                <div class="control-group">
-                    <label for="article_title" class="control-label">博客标题</label>
-                    <div class="controls">
-                        <input type="text" name="article_title" id="article_title" class="input-xlarge" value="${article.title}">
-                    </div>
-                </div>
-                <div for="choice" class="control-group">
-                    <label class="control-label">类&nbsp;&nbsp;&nbsp;&nbsp;型</label>
-                    <div class="controls">
-                        <input type="radio" id="self" class="clearCSS" name="type" value="0">原创
-				        <input type="radio" id="other" class="clearCSS" name="type" value="1">转载
-                    </div>
-                </div>
-                <script>
+	<div class="row-fluid">
+		<div class="span12">
+			<div class="box box-color box-bordered">
+				<div class="box-title">
+					<h3>
+						<i class="icon-edit"></i> 修改博客
+					</h3>
+				</div>
+				<div class="box-content nopadding">
+					<form action="#" method="POST"
+						class='form-horizontal form-bordered'>
+						<div class="control-group">
+							<label for="article_title" class="control-label">博客标题</label>
+							<div class="controls">
+								<input type="text" name="article_title" id="article_title"
+									class="input-xlarge" value="${article.title}">
+							</div>
+						</div>
+						<div for="choice" class="control-group">
+							<label class="control-label">类&nbsp;&nbsp;&nbsp;&nbsp;型</label>
+							<div class="controls">
+								<input type="radio" id="self" class="clearCSS" name="type"
+									value="0">原创 <input type="radio" id="other"
+									class="clearCSS" name="type" value="1">转载
+							</div>
+						</div>
+						<script>
                     var type = "${article.title}";
                     if( type == 0 )
                     {
@@ -60,34 +68,33 @@
                     	$("#other").attr("checked","checked");
                     }
                 </script>
-                <div class="control-group">
-                    <label for="article_url" class="control-label">转载地址</label>
-                    <div class="controls">
-                        <input type="text" name="article_url" id="article_url" class="input-xlarge" value="${article.url!}">
-                    </div>
-                </div>
-                
-                <div class="control-group">
-                     <label for="select" class="control-label">类&nbsp;&nbsp;&nbsp;&nbsp;别</label>
-                     <div class="controls">
-                         <div class="input-xlarge">
-                             <select name="select" id="article_category_id" class='chosen-select'>
-                             <#list categorySuperList as categorySuper>
-								<optgroup label="${categorySuper.name}">
-								<#list categorySuper.categorySubList as categorySub>
-									<option value="${categorySub.id}" 
-									<#if article.categorySub.id == categorySub.id>
-									selected="selected"
-									</#if> 
-									>${categorySub.name}</option>
-								</#list>
-								</optgroup>
-							 </#list>  
-                             </select>
-                         </div>
-                     </div>
-                </div>
-                <!-- 
+						<div class="control-group">
+							<label for="article_url" class="control-label">转载地址</label>
+							<div class="controls">
+								<input type="text" name="article_url" id="article_url"
+									class="input-xlarge" value="${article.url!}">
+							</div>
+						</div>
+
+						<div class="control-group">
+							<label for="select" class="control-label">类&nbsp;&nbsp;&nbsp;&nbsp;别</label>
+							<div class="controls">
+								<div class="input-xlarge">
+									<select name="select" id="article_category_id"
+										class='chosen-select'> <#list categorySuperList as
+										categorySuper>
+										<optgroup label="${categorySuper.name}">
+											<#list categorySuper.categorySubList as categorySub>
+											<option value="${categorySub.id}"<#if
+												article.categorySub.id == categorySub.id>
+												selected="selected" </#if> >${categorySub.name}</option>
+											</#list>
+										</optgroup> </#list>
+									</select>
+								</div>
+							</div>
+						</div>
+						<!-- 
                 <div class="control-group">
                      <label for="textfield" class="control-label">项&nbsp;&nbsp;&nbsp;&nbsp;目</label>
                      <div class="controls">
@@ -105,40 +112,43 @@
                      </div>
                 </div>
                  -->
-                <div class="control-group">
-                    <label for="article_tags" class="control-label">标&nbsp;&nbsp;&nbsp;&nbsp;签</label>
-                    <div class="controls">
-                        <input type="text" name="article_tags" id="article_tags" class="input-xlarge" value="${article.tags}">
-                        <span>请以逗号分隔</span>
-                    </div>
-                </div>
-                <div class="control-group">
-                    <label for="article_tags" class="control-label">内&nbsp;&nbsp;&nbsp;&nbsp;容</label>
-                    <div class="controls">
-                        <textarea id="article_content" name="article_content" class="form" >${article.content}</textarea>
-                    </div>
-                </div>
-                <div class="form-actions">
-                     <button id="edit"  class="btn">修改</button>
-			         <button id="editTemp"  class="btn">暂存</button>
-                </div>
-            </form>
-            </div>
-        </div>
-    </div>
-</div>
+						<div class="control-group">
+							<label for="article_tags" class="control-label">标&nbsp;&nbsp;&nbsp;&nbsp;签</label>
+							<div class="controls">
+								<input type="text" name="article_tags" id="article_tags"
+									class="input-xlarge" value="${article.tags}"> <span>请以逗号分隔</span>
+							</div>
+						</div>
+						<div class="control-group">
+							<label for="article_tags" class="control-label">内&nbsp;&nbsp;&nbsp;&nbsp;容</label>
+							<div class="controls">
+								<textarea id="article_content" name="article_content"
+									class="form">${article.content}</textarea>
+							</div>
+						</div>
+						<div class="form-actions">
+							<button id="edit" class="btn">修改</button>
+							<button id="editTemp" class="btn">暂存</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
 	<style type="text/css">
-		#article_content{
-			width: 800px;
-			height: 300px;
-		}
-		#article_tags{
-			width: 600px;
-		}
-		#url_article_url{
-			display: none;
-		}
-	</style>
+#article_content {
+	width: 800px;
+	height: 300px;
+}
+
+#article_tags {
+	width: 600px;
+}
+
+#url_article_url {
+	display: none;
+}
+</style>
 	<script type="text/javascript" src="${path}/editor/kindeditor-min.js"></script>
 	<script type="text/javascript" src="${path}/js/sha1.js"></script>
 	<script type="text/javascript">

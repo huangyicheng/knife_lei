@@ -1,86 +1,94 @@
-<#include "../layout.html"/>
-<@layout>
-    <!-- chosen -->
-    <link rel="stylesheet" href="${path}/css/plugins/chosen/chosen.css">
-    <!-- Chosen -->
-    <script src="${path}/js/plugins/chosen/chosen.jquery.min.js"></script>
-    <!-- Theme framework -->
-    <script src="${path}/js/eakroko.min.js"></script>
-	<div class="row-fluid">
-    <div class="span12">
-        <div class="box box-color box-bordered">
-            <div class="box-title">
-                <h3><i class="icon-edit"></i> 添加博客</h3>
-            </div>
-            <div class="box-content nopadding">
-            <form action="#" method="POST" class='form-horizontal form-bordered'>
-                <div class="control-group">
-                    <label for="article_title" class="control-label">博客标题</label>
-                    <div class="controls">
-                        <input type="text" name="article_title" id="article_title" class="input-xlarge">
-                    </div>
-                </div>
-                <div for="choice" class="control-group">
-                    <label class="control-label">类&nbsp;&nbsp;&nbsp;&nbsp;型</label>
-                    <div class="controls">
-                        <input type="radio" class="clearCSS" name="type" value="0">原创
-				        <input type="radio" class="clearCSS" name="type" value="1">转载
-                    </div>
-                </div>
-                <div class="control-group">
-                    <label for="article_url" class="control-label">转载地址</label>
-                    <div class="controls">
-                        <input type="text" name="article_url" id="article_url" class="input-xlarge">
-                    </div>
-                </div>
-                <div class="control-group">
-                     <label for="select" class="control-label">类&nbsp;&nbsp;&nbsp;&nbsp;别</label>
-                     <div class="controls">
-                         <div class="input-xlarge">
-                             <select name="select" id="article_category_id" class='chosen-select'>
-                             <#list categorySuperList as categorySuper>
-						         <option value="${categorySuper.id}">${categorySuper.name}</option>
-				             </#list>    
-                             </select>
-                         </div>
-                     </div>
-                </div>
-                <div class="control-group">
-                    <label for="article_tags" class="control-label">标&nbsp;&nbsp;&nbsp;&nbsp;签</label>
-                    <div class="controls">
-                        <input type="text" name="article_tags" id="article_tags" class="input-xlarge">
-                        <span>请以逗号分隔</span>
-                    </div>
-                </div>
-                <div class="control-group">
-                    <label for="article_tags" class="control-label">内&nbsp;&nbsp;&nbsp;&nbsp;容</label>
-                    <div class="controls">
-                        <textarea id="article_content" name="article_content" class="form" ></textarea>
-                    </div>
-                </div>
-                <div class="form-actions">
-                     <input type="submit" class="btn btn-primary" value="Submit" id="add">
-                     <button type="button" class="btn">Cancel</button>
-                </div>
-            </form>
-            </div>
-        </div>
-    </div>
+<#include "../layout.html"/> <@layout>
+<!-- chosen -->
+<link rel="stylesheet" href="${path}/css/plugins/chosen/chosen.css">
+<!-- Chosen -->
+<script src="${path}/js/plugins/chosen/chosen.jquery.min.js"></script>
+<!-- Theme framework -->
+<script src="${path}/js/eakroko.min.js"></script>
+<div class="row-fluid">
+	<div class="span12">
+		<div class="box box-color box-bordered">
+			<div class="box-title">
+				<h3>
+					<i class="icon-edit"></i> 添加博客
+				</h3>
+			</div>
+			<div class="box-content nopadding">
+				<form action="#" method="POST" class='form-horizontal form-bordered'>
+					<div class="control-group">
+						<label for="article_title" class="control-label">博客标题</label>
+						<div class="controls">
+							<input type="text" name="article_title" id="article_title"
+								class="input-xlarge">
+						</div>
+					</div>
+					<div for="choice" class="control-group">
+						<label class="control-label">类&nbsp;&nbsp;&nbsp;&nbsp;型</label>
+						<div class="controls">
+							<input type="radio" class="clearCSS" name="type" value="0">原创
+							<input type="radio" class="clearCSS" name="type" value="1">转载
+						</div>
+					</div>
+					<div class="control-group">
+						<label for="article_url" class="control-label">转载地址</label>
+						<div class="controls">
+							<input type="text" name="article_url" id="article_url"
+								class="input-xlarge">
+						</div>
+					</div>
+					<div class="control-group">
+						<label for="select" class="control-label">类&nbsp;&nbsp;&nbsp;&nbsp;别</label>
+						<div class="controls">
+							<div class="input-xlarge">
+								<select name="select" id="article_category_id"
+									class='chosen-select'> <#list categorySuperList as
+									categorySuper>
+									<option value="${categorySuper.id}">${categorySuper.name}</option>
+									</#list>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="control-group">
+						<label for="article_tags" class="control-label">标&nbsp;&nbsp;&nbsp;&nbsp;签</label>
+						<div class="controls">
+							<input type="text" name="article_tags" id="article_tags"
+								class="input-xlarge"> <span>请以逗号分隔</span>
+						</div>
+					</div>
+					<div class="control-group">
+						<label for="article_tags" class="control-label">内&nbsp;&nbsp;&nbsp;&nbsp;容</label>
+						<div class="controls">
+							<textarea id="article_content" name="article_content"
+								class="form"></textarea>
+						</div>
+					</div>
+					<div class="form-actions">
+						<input type="submit" class="btn btn-primary" value="Submit"
+							id="add">
+						<button type="button" class="btn">Cancel</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
 </div>
-	<style type="text/css">
-		#article_content{
-			width: 900px;
-			height: 400px;
-		}
-		#article_tags{
-			width: 600px;
-		}
-		#url_article_url{
-			display: none;
-		}
-	</style>
-	<script type="text/javascript" src="${path}/editor/kindeditor-min.js"></script>
-	<script type="text/javascript">
+<style type="text/css">
+#article_content {
+	width: 900px;
+	height: 400px;
+}
+
+#article_tags {
+	width: 600px;
+}
+
+#url_article_url {
+	display: none;
+}
+</style>
+<script type="text/javascript" src="${path}/editor/kindeditor-min.js"></script>
+<script type="text/javascript">
 		var editor;
 		KindEditor.ready(function(K) {
 		      editor = K.create('#article_content',{

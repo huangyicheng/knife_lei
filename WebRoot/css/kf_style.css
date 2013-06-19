@@ -3,7 +3,7 @@ body {
 	padding: 0px;
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 14px;
-	background: #ffffff url('../img/bg.gif') left top repeat-x; 
+	background: #ffffff url('../img/bg.gif') left top repeat-x;
 	color: #1e1e1e;
 }
 
@@ -13,7 +13,7 @@ p {
 	line-height: 130%;
 }
 
-a, a:visited, a:active {
+a,a:visited,a:active {
 	font-family: Arial, Helvetica, sans-serif;
 	color: #1b6c8f;
 	text-decoration: none;
@@ -53,8 +53,8 @@ img.alignleft {
 }
 
 #container {
-	width: 960px;	
-	margin: 0 auto;	
+	width: 960px;
+	margin: 0 auto;
 }
 
 #header {
@@ -69,7 +69,8 @@ img.alignleft {
 	padding: 10px 0px 0px 5px;
 }
 
-#header h1, #header h1 a, #header h1 a:visited, #header h1 a:active, #header h1 a:hover {
+#header h1,#header h1 a,#header h1 a:visited,#header h1 a:active,#header h1 a:hover
+	{
 	font-family: Arial, Helvetica, sans-serif;
 	letter-spacing: -1px;
 	color: #175c7a;
@@ -106,7 +107,7 @@ img.alignleft {
 	padding: 0px;
 }
 
-#topmenu li a, #topmenu li a:visited, #topmenu li a:active {
+#topmenu li a,#topmenu li a:visited,#topmenu li a:active {
 	float: left;
 	display: block;
 	color: #ffffff;
@@ -118,7 +119,8 @@ img.alignleft {
 	padding: 10px 25px 10px 25px;
 }
 
-#topmenu li a.highlight, #topmenu li a:visited.highlight, #topmenu li a:active.highlight {
+#topmenu li a.highlight,#topmenu li a:visited.highlight,#topmenu li a:active.highlight
+	{
 	background: #ffffff;
 	color: #1e1e1e;
 	padding: 10px 24px 10px 24px;
@@ -138,16 +140,15 @@ img.alignleft {
 	display: inline;
 	margin: 0px;
 	padding: 25px 35px 50px 5px;
-	
 }
 
 .post {
-	margin: 0px;	
+	margin: 0px;
 	padding: 0px;
 }
 
 .entry {
-	margin: 0px;	
+	margin: 0px;
 	padding: 6px 0px 12px 0px;
 }
 
@@ -163,14 +164,14 @@ img.alignleft {
 	font-weight: bold;
 }
 
-#content h2 a, #content h2 a:visited, #content h2 a:active {
+#content h2 a,#content h2 a:visited,#content h2 a:active {
 	font-size: 25px;
 	text-decoration: none;
 	color: #09445D;
 }
 
 #content h2 a:hover {
-	color: #1B6C8F; 
+	color: #1B6C8F;
 	text-decoration: none;
 }
 
@@ -204,7 +205,7 @@ blockquote {
 }
 
 h3 {
-	margin: 10px 0px 14px 0px;	
+	margin: 10px 0px 14px 0px;
 	color: #1e1e1e;
 	font-size: 15px;
 	font-weight: bold;
@@ -252,13 +253,13 @@ h3 {
 	padding: 2px;
 	border: 1px solid #dedede;
 }
-	
+
 #commentform input {
 	width: 180px;
 	margin: 0px 7px 0px 0px;
 	border: 1px solid #dedede;
 }
-	
+
 #commentform #submit {
 	background-color: #ffffff;
 	border: 1px solid #dedede;
@@ -266,18 +267,18 @@ h3 {
 }
 
 #content .postpagesnav {
-	margin: 0px; 
-	padding: 25px 5px 5px 5px; 
+	margin: 0px;
+	padding: 25px 5px 5px 5px;
 }
 
 #content .postpagesnav .older {
-	width:50%;
-	float:left;
+	width: 50%;
+	float: left;
 }
 
 #content .postpagesnav .newer {
-	width: 50%; 
-	float: right; 
+	width: 50%;
+	float: right;
 	text-align: right;
 }
 
@@ -307,7 +308,7 @@ h3 {
 }
 
 #sidebar ul {
-	list-style: none; 
+	list-style: none;
 	margin: 0px;
 	padding: 0px;
 }
@@ -320,12 +321,12 @@ h3 {
 }
 
 #sidebar ul li ul {
-	list-style: none; 
+	list-style: none;
 	margin: 0px;
 	padding: 0px 19px 0px 19px;
 }
 
-#sidebar ul li ul li {	
+#sidebar ul li ul li {
 	margin: 0px;
 	padding: 7px 0px 7px 0px;
 	border-top: none;
@@ -345,7 +346,7 @@ h3 {
 	width: 160px;
 	padding: 1px;
 	margin: 1px;
-	height: 18px;		
+	height: 18px;
 }
 
 #content2 {
@@ -354,7 +355,7 @@ h3 {
 	font-size: 12px;
 	clear: both;
 	display: block;
-	text-align: center;	
+	text-align: center;
 	border-top: 1px solid #d1d1d1;
 }
 
@@ -362,7 +363,7 @@ h3 {
 	color: #6e6e6e;
 }
 
-#content2 a, #content2 a:visited, #content2 a:active {
+#content2 a,#content2 a:visited,#content2 a:active {
 	font-size: 12px;
 	color: #6e6e6e;
 	text-decoration: underline;

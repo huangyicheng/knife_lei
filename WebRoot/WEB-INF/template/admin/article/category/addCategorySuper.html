@@ -1,20 +1,20 @@
-<#include "../../dialog.html"/>
-<@dialog title="添加一级菜单">
+<#include "../../dialog.html"/> <@dialog title="添加一级菜单">
 <div id="form">
 	<div class="form_row">
 		<label class="span2">名称:</label>
-		<div><input id="categorySuper_name" class="form" type="text"></div>
+		<div>
+			<input id="categorySuper_name" class="form" type="text">
+		</div>
 	</div>
 	<div class="form_row">
-			<label class="span2">顺序值:</label>
-			<div>
-				<select id="categorySuper_order">
-					<#list 0..count-1 as index>
-						<option value="${index}">${index}</option>
-					</#list>
-				</select>
-			</div>
+		<label class="span2">顺序值:</label>
+		<div>
+			<select id="categorySuper_order"> <#list 0..count-1 as
+				index>
+				<option value="${index}">${index}</option> </#list>
+			</select>
 		</div>
+	</div>
 	<div class="form_row">
 		<button id="add" type="button">添加</button>
 	</div>

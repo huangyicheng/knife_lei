@@ -1,88 +1,87 @@
 <!doctype html>
 <html>
 <head>
-    <meta charset="utf8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <!-- Apple devices fullscreen -->
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <!-- Apple devices fullscreen -->
-    <meta names="apple-mobile-web-app-status-bar-style" content="black-tdanslucent" />
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="${path}/css/bootstrap.min.css">
-    <!-- dataTables -->
-    <link rel="stylesheet" href="${path}/css/plugins/datatable/TableTools.css">
-    <!-- chosen-->
-    <link rel="stylesheet" href="${path}/css/plugins/chosen/chosen.css"> 
-    <!-- Theme CSS -->
-    <link rel="stylesheet" href="${path}/css/style.css">
-    <!-- jQuery -->
-    <script src="${path}/js/jquery.min.js"></script>
-    <!-- Bootstrap -->
-    <script src="${path}/js/bootstrap.min.js"></script>
-    <!-- dataTables -->
-    <script src="${path}/js/plugins/datatable/jquery.dataTables.min.js"></script>
-    <script src="${path}/js/plugins/datatable/TableTools.min.js"></script>
-    <script src="${path}/js/plugins/datatable/ColReorder.min.js"></script>
-    <script src="${path}/js/plugins/datatable/ColVis.min.js"></script>
-    <script src="${path}/js/plugins/datatable/jquery.dataTables.columnFilter.js"></script>
-    <!-- Chosen -->
-    <script src="${path}/js/plugins/chosen/chosen.jquery.min.js"></script>
-    <!-- Theme framework -->
-    <script src="${path}/js/eakroko.min.js"></script>
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="${path}/img/favicon.ico" />
-    <!-- Apple devices Homescreen icon -->
-    <link rel="apple-touch-icon-precomposed" href="${path}/img/apple-touch-icon-precomposed.png" />
+<meta charset="utf8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<!-- Apple devices fullscreen -->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!-- Apple devices fullscreen -->
+<meta names="apple-mobile-web-app-status-bar-style"
+	content="black-tdanslucent" />
+<!-- Bootstrap -->
+<link rel="stylesheet" href="${path}/css/bootstrap.min.css">
+<!-- dataTables -->
+<link rel="stylesheet"
+	href="${path}/css/plugins/datatable/TableTools.css">
+<!-- chosen-->
+<link rel="stylesheet" href="${path}/css/plugins/chosen/chosen.css">
+<!-- Theme CSS -->
+<link rel="stylesheet" href="${path}/css/style.css">
+<!-- jQuery -->
+<script src="${path}/js/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="${path}/js/bootstrap.min.js"></script>
+<!-- dataTables -->
+<script src="${path}/js/plugins/datatable/jquery.dataTables.min.js"></script>
+<script src="${path}/js/plugins/datatable/TableTools.min.js"></script>
+<script src="${path}/js/plugins/datatable/ColReorder.min.js"></script>
+<script src="${path}/js/plugins/datatable/ColVis.min.js"></script>
+<script
+	src="${path}/js/plugins/datatable/jquery.dataTables.columnFilter.js"></script>
+<!-- Chosen -->
+<script src="${path}/js/plugins/chosen/chosen.jquery.min.js"></script>
+<!-- Theme framework -->
+<script src="${path}/js/eakroko.min.js"></script>
+<!-- Favicon -->
+<link rel="shortcut icon" href="${path}/img/favicon.ico" />
+<!-- Apple devices Homescreen icon -->
+<link rel="apple-touch-icon-precomposed"
+	href="${path}/img/apple-touch-icon-precomposed.png" />
 </head>
 <body>
-<div class="row-fluid">
-    <div class="span12">
-        <div class="box box-color box-bordered">
-            <div class="box-title">
-                <h3>
-                    <i class="icon-table"></i>
-                                                     博客列表
-                </h3>
-            </div>
-            <div class="box-content nopadding">
-                <table class="table table-bordered dataTable dataTable-scroll-x">
-                    <thead>
-                    <tr>
-                        <th>序号</th>
-                        <th>标题</th>
-                        <th>标签</th>
-                        <th>创建时间</th>
-                        <th>类别</th>
-                        <th>类型</th>
-                        <th>转载地址</th>
-                        <th>操作</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <#list page.list as article>
-                    <tr>
-		                <td>${article.id}</td>
-		                <td>${article.title}</td>
-		                <td>
-		                <#list article._tags as tag>
-					    ${tag}&nbsp;
-				        </#list>
-				        </td>
-		                <td>${article._createDateTime}</td>
-		                <td>${article.categorySuper.name}</td>
-		                <td>${article._type}</td>
-		                <td><a target="_blank" href="${article.url!}">${article.url!}</a></td>
-		                <td>
-		                <a class="del" href="${path}/admin/article/delete/${article.id}.html">删除</a>
-		                <a href="${path}/admin/article/edit/${article.id}.html">编辑</a>
-		                </td>
-		                </tr>
-	                </#list>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-</div>
+	<div class="row-fluid">
+		<div class="span12">
+			<div class="box box-color box-bordered">
+				<div class="box-title">
+					<h3>
+						<i class="icon-table"></i> 博客列表
+					</h3>
+				</div>
+				<div class="box-content nopadding">
+					<table class="table table-bordered dataTable dataTable-scroll-x">
+						<thead>
+							<tr>
+								<th>序号</th>
+								<th>标题</th>
+								<th>标签</th>
+								<th>创建时间</th>
+								<th>类别</th>
+								<th>类型</th>
+								<th>转载地址</th>
+								<th>操作</th>
+							</tr>
+						</thead>
+						<tbody>
+							<#list page.list as article>
+							<tr>
+								<td>${article.id}</td>
+								<td>${article.title}</td>
+								<td><#list article._tags as tag> ${tag}&nbsp; </#list></td>
+								<td>${article._createDateTime}</td>
+								<td>${article.categorySuper.name}</td>
+								<td>${article._type}</td>
+								<td><a target="_blank" href="${article.url!}">${article.url!}</a></td>
+								<td><a class="del"
+									href="${path}/admin/article/delete/${article.id}.html">删除</a> <a
+									href="${path}/admin/article/edit/${article.id}.html">编辑</a></td>
+							</tr>
+							</#list>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

@@ -1,31 +1,25 @@
-<#include "layout.html"/>
-<@layout>
-        <#list page_news.list as blog>
-	        <div class="con">
-				<div class="tit clearfix">
-				    <span class="note_icon"></span>
-				    <a href="${path}/article/${blog.id}.html">${blog.title}</a>
-			    </div>
-			  <div class="text">
-					<div class="infor_tag">    
-						 <#list blog._tags as tag>
-							<a title="${tag}" href="${path}/tag/${tag}.html" class="tag" rel="tag">
-							 <span>${tag}</span>
-							</a>
-						</#list>
-			        </div>
-			       ${blog.brief}
-			  </div>
-			  <div class="info clearfix">
-			    <div class="fr">
-				  <span class="author">knife</span>
-			      <span class="time">${blog._createDateTime}发表</span>
-			      <span class="edit">${blog._updateDateTime}更新</span>
-			      <span class="views" title="浏览次数">${blog.viewCount}次浏览</span>
-			      <a class="comment" href="#" title="评论">${blog.replyCount}</a>
-			    </div>
-			  </div>
-			</div>
-		</#list>
-		<@pagination pageNum=page_news.pageNumber totalPage=page_news.totalPage/>
-</@layout>
+<#include "layout.html"/> <@layout> <#list page_news.list as blog>
+<div class="con">
+	<div class="tit clearfix">
+		<span class="note_icon"></span> <a
+			href="${path}/article/${blog.id}.html">${blog.title}</a>
+	</div>
+	<div class="text">
+		<div class="infor_tag">
+			<#list blog._tags as tag> <a title="${tag}"
+				href="${path}/tag/${tag}.html" class="tag" rel="tag"> <span>${tag}</span>
+			</a> </#list>
+		</div>
+		${blog.brief}
+	</div>
+	<div class="info clearfix">
+		<div class="fr">
+			<span class="author">knife</span> <span class="time">${blog._createDateTime}发表</span>
+			<span class="edit">${blog._updateDateTime}更新</span> <span
+				class="views" title="浏览次数">${blog.viewCount}次浏览</span> <a
+				class="comment" href="#" title="评论">${blog.replyCount}</a>
+		</div>
+	</div>
+</div>
+</#list> <@pagination pageNum=page_news.pageNumber
+totalPage=page_news.totalPage/> </@layout>
